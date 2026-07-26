@@ -21,6 +21,91 @@ type SavedStory = { storyId: string; folder: string; savedAt: string };
 
 const STORIES: Story[] = [
   {
+    id: "claude-opus-5",
+    title: "Introducing Claude Opus 5",
+    source: "Anthropic",
+    url: "https://www.anthropic.com/news/claude-opus-5",
+    date: "2026-07-26",
+    time: "08:58",
+    stars: 5,
+    topic: "模型",
+    brief: "Anthropic 把接近旗舰级的长任务能力压到更适合日常使用的 Opus 档位。",
+    summary:
+      "Anthropic 发布 Claude Opus 5，定位为面向编码、知识工作和长周期智能体的日常主力模型。官方称它以 Opus 4.8 相同价格带来更高性能，并成为 Claude Max 默认模型和 Claude Pro 的最强模型；同时提供 effort 档位，让团队在任务质量、token 消耗与速度之间做取舍。",
+    why: "模型选择正在从“最强即最好”转向单位任务成功成本。产品团队应重新评估复杂任务的模型路由、验证闭环和人工接管点，而不只比较单次调用价格。",
+  },
+  {
+    id: "meta-ai-acts",
+    title: "Meta AI Doesn’t Just Think, It Acts",
+    source: "Meta Newsroom",
+    url: "https://about.fb.com/news/2026/07/meta-ai-muse-spark-doesnt-just-think-it-acts/",
+    date: "2026-07-26",
+    time: "08:55",
+    stars: 5,
+    topic: "产品",
+    brief: "Meta AI 开始连接邮箱与日历、持续执行任务，并在工作过程中接受实时纠偏。",
+    summary:
+      "Meta 宣布由 Muse Spark 1.1 驱动的新一轮 Meta AI 功能：它可以制定计划、连接邮箱和日历、生成幻灯片、定时推送简报，并持续完成研究或生活任务。用户可在任务执行中实时调整方向，产出会集中保存；功能先在部分市场的 Meta AI app 与 meta.ai 推出，之后扩展到 WhatsApp。",
+    why: "这把消费级助手的竞争推进到“持续任务＋个人上下文＋可中途干预”。对产品人而言，任务状态、权限边界、可恢复性和长期记忆将比聊天入口本身更关键。",
+  },
+  {
+    id: "nvidia-modelexpress",
+    title: "ModelExpress: Distributing Model Artifacts at the Speed of Light",
+    source: "NVIDIA Technical Blog",
+    url: "https://developer.nvidia.com/blog/modelexpress-distributing-model-artifacts-at-the-speed-of-light/",
+    date: "2026-07-26",
+    time: "08:52",
+    stars: 4,
+    topic: "基础设施",
+    brief: "NVIDIA 把大模型扩容的瓶颈从重复下载权重，改写为 GPU 间直接分发。",
+    summary:
+      "NVIDIA 介绍 ModelExpress：系统会优先从已有服务副本通过 P2P RDMA 直接把权重传到目标 GPU，并在不可用时自动回退到对象存储、本地存储或默认加载器。官方在特定 8×B200 环境中，将 DeepSeek‑V4 Pro 的权重与内核缓存传输压到 10 秒内，整体启动由 8 分钟降至 1 分 44 秒。",
+    why: "当模型达到数百 GB，冷启动已直接影响弹性扩容、发布速度和推理成本。基础设施能力会反过来决定产品能否使用更大模型、承诺更低延迟并控制峰值容量。",
+  },
+  {
+    id: "microsoft-mlvc",
+    title: "MLVC: Multi-platform Learned Video Codec for Real-World Deployment",
+    source: "Microsoft MLVC",
+    url: "https://github.com/microsoft/mlvc",
+    date: "2026-07-26",
+    time: "08:49",
+    stars: 4,
+    topic: "多模态",
+    brief: "微软把已在 Teams 验证的神经视频编码器连同权重与训练工具完整开源。",
+    summary:
+      "Microsoft 开源 MLVC，一套以端到端神经压缩替代传统视频编码模块的多平台视频编码器。仓库以 MIT 许可证提供模型源码、训练权重、训练脚本和 NPU 转换工具；官方材料称其已在 Apple、Intel 与 Qualcomm 硬件上实现 540p 30fps，并正通过 Teams 的真实通话逐步验证。",
+    why: "生成式与实时多模态产品都受制于带宽、端侧算力和时延。可在通用 NPU 上运行的学习型编码器，可能把模型能力延伸到网络较差、成本敏感和端侧优先的场景。",
+  },
+  {
+    id: "ray-ai-tpu",
+    title: "Run Ray on TPU, Part 2: Ray AI libraries",
+    source: "Google Developers Blog",
+    url: "https://developers.googleblog.com/en/run-ray-on-tpu-part-2-ray-ai-libraries/",
+    date: "2026-07-26",
+    time: "08:46",
+    stars: 3,
+    topic: "开发者",
+    brief: "Ray Serve、Data 与 Train 获得更完整的 TPU 路径，GPU 工作流更容易平移到 TPU。",
+    summary:
+      "Google 发布 Ray on TPU 的第二部分实践指南：Ray Serve 可按 TPU slice 拓扑部署跨主机模型，Ray Data 通过 JAX 原生批次减少数据搬运，JaxTrainer 则统一处理分布式训练、检查点与故障恢复。Ray 还提供预装 JAX/TPU 栈的官方镜像，并在 Dashboard 中显示 TPU 利用率和内存。",
+    why: "基础设施抽象正在降低异构算力迁移成本。产品团队可把 GPU/TPU 选择变成容量、价格和可用性的运营决策，而不是一次性绑定的工程架构。",
+  },
+  {
+    id: "uk-ai-taskforce",
+    title:
+      "AI to power change at the heart of government as Lord Vallance appointed chair of new PM AI Taskforce",
+    source: "UK Cabinet Office",
+    url: "https://www.gov.uk/government/news/ai-to-power-change-at-the-heart-of-government-as-lord-vallance-appointed-chair-of-new-pm-ai-taskforce",
+    date: "2026-07-26",
+    time: "08:43",
+    stars: 3,
+    topic: "政策",
+    brief: "英国把 AI 任务组置于首相与内阁核心，并将 AI Security Institute 纳入新架构。",
+    summary:
+      "英国政府成立新的首相 AI Taskforce，由 Lord Vallance 担任主席，负责 AI 总体战略、公共服务转型与跨政府采用，并直接向首相与内阁体系汇报。现有 AI Security Institute 的责任也将移交至首相与内阁办公室，使产业推动、公共部门落地与安全治理进入更集中的决策结构。",
+    why: "政府从发布原则转向建立交付型组织，通常会加速采购、试点和合规要求的形成。面向英国或公共部门的 AI 产品，应关注后续统一标准、审计能力与供应商准入变化。",
+  },
+  {
     id: "health-chatgpt",
     title: "ChatGPT 推出 Health：可安全连接个人健康信息",
     source: "OpenAI",
@@ -135,6 +220,22 @@ const STORIES: Story[] = [
 ];
 
 const DEFAULT_FOLDERS = ["必读", "稍后阅读", "产品灵感"];
+const STORY_DATES = Array.from(new Set(STORIES.map((story) => story.date)))
+  .sort((a, b) => b.localeCompare(a))
+  .slice(0, 7);
+const CURRENT_DATE = STORY_DATES[0];
+const CURATED_AT = "09:02";
+
+function dateParts(date: string) {
+  const value = new Date(`${date}T00:00:00+08:00`);
+  return {
+    day: new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(value).toUpperCase(),
+    short: new Intl.DateTimeFormat("en-GB", { day: "2-digit", month: "long" })
+      .format(value)
+      .toUpperCase(),
+    chinese: new Intl.DateTimeFormat("zh-CN", { month: "long", day: "numeric" }).format(value),
+  };
+}
 
 function readLocal<T>(key: string, fallback: T): T {
   if (typeof window === "undefined") return fallback;
@@ -157,7 +258,7 @@ function Stars({ count }: { count: number }) {
 
 export default function Home() {
   const [tab, setTab] = useState<"news" | "saved" | "notes">("news");
-  const [activeDate, setActiveDate] = useState("2026-07-25");
+  const [activeDate, setActiveDate] = useState(CURRENT_DATE);
   const [query, setQuery] = useState("");
   const [topic, setTopic] = useState("全部");
   const [selected, setSelected] = useState<Story | null>(null);
@@ -194,6 +295,14 @@ export default function Home() {
 
   const topics = ["全部", ...Array.from(new Set(STORIES.map((story) => story.topic)))];
   const dayStories = STORIES.filter((story) => story.date === activeDate);
+  const activeDateParts = dateParts(activeDate);
+  const activeDateIndex = STORY_DATES.indexOf(activeDate);
+  const nextArchiveDate =
+    activeDateIndex >= 0 && activeDateIndex < STORY_DATES.length - 1
+      ? STORY_DATES[activeDateIndex + 1]
+      : CURRENT_DATE;
+  const nextArchiveParts = dateParts(nextArchiveDate);
+  const sourceCount = new Set(dayStories.map((story) => story.source)).size;
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return STORIES.filter(
@@ -295,15 +404,20 @@ export default function Home() {
           <div className="content">
             <div className="page-heading">
               <div>
-                <p className="eyebrow">{activeDate === "2026-07-25" ? "SATURDAY · 25 JULY" : "FRIDAY · 24 JULY"}</p>
-                <h1>{activeDate === "2026-07-25" ? "今天，AI 世界" : "7月24日，AI 世界"}<br />发生了什么？</h1>
+                <p className="eyebrow">{activeDateParts.day} · {activeDateParts.short}</p>
+                <h1>{activeDate === CURRENT_DATE ? "今天，AI 世界" : `${activeDateParts.chinese}，AI 世界`}<br />发生了什么？</h1>
                 <p className="subhead">
-                  从 <strong>42 个可信来源</strong> 中筛选、去重并压缩成 {dayStories.length} 条值得你知道的更新。
+                  从 <strong>{sourceCount} 个一手来源</strong> 中筛选、去重并压缩成 {dayStories.length} 条值得你知道的更新。
                 </p>
+                {activeDate === CURRENT_DATE && (
+                  <p className="editor-note">
+                    周末说明：严格过去 24 小时未出现足够的独立官方大事件，本期扩展至 48 小时回看；未收录传闻或重复上架信息。
+                  </p>
+                )}
               </div>
               <div className="brief-status">
                 <span>LAST CURATED</span>
-                <strong>08:42</strong>
+                <strong>{activeDate === CURRENT_DATE ? CURATED_AT : dayStories[0]?.time ?? "—"}</strong>
                 <small>下一次更新 · 明天 09:00</small>
               </div>
             </div>
@@ -364,17 +478,21 @@ export default function Home() {
               {filtered.length === 0 && <div className="empty">没有找到匹配的简报。</div>}
             </div>
 
-            <div className="date-divider"><span>{activeDate === "2026-07-25" ? "FRIDAY · 24 JULY" : "SATURDAY · 25 JULY"}</span><i /></div>
+            <div className="date-divider">
+              <span>{nextArchiveParts.day} · {nextArchiveParts.short}</span><i />
+            </div>
             <button
               className="older-button"
               onClick={() => {
-                setActiveDate(activeDate === "2026-07-25" ? "2026-07-24" : "2026-07-25");
+                setActiveDate(nextArchiveDate);
                 setTopic("全部");
                 setQuery("");
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
             >
-              {activeDate === "2026-07-25" ? "查看昨日归档" : "返回今日简报"} <span>→</span>
+              {nextArchiveDate === CURRENT_DATE
+                ? "返回今日简报"
+                : `查看 ${nextArchiveParts.chinese} 归档`} <span>→</span>
             </button>
           </div>
         )}
