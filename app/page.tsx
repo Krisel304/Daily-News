@@ -270,6 +270,7 @@ export default function Home() {
   const [standardsOpen, setStandardsOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
 
+  /* eslint-disable react-hooks/set-state-in-effect -- Browser storage is only available after client hydration. */
   useEffect(() => {
     setSaved(readLocal("pulse-saved", []));
     setFolders(readLocal("pulse-folders", DEFAULT_FOLDERS));
@@ -285,6 +286,7 @@ export default function Home() {
     );
     setHydrated(true);
   }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   useEffect(() => {
     if (!hydrated) return;
