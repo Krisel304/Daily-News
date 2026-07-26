@@ -97,9 +97,12 @@ npm test
 
 ## 部署
 
-项目当前关联 OpenAI Sites，配置位于 `.openai/hosting.json`。`sites` Git remote 用于 Sites 版本发布，`origin` 指向 GitHub，二者用途不同，请勿删除 Sites 配置。
+项目同时支持两条部署路径：
 
-公开站点若使用自定义域名，需要在 Sites 中绑定域名并按平台提供的记录配置 DNS。
+- **Vercel**：读取 `vercel.json`，执行 `npm run build:vercel`，用于公开预览和正式域名。
+- **OpenAI Sites**：读取 `.openai/hosting.json`，执行默认 `npm run build`，用于 Sites 版本发布。
+
+Git remote `origin` 指向 GitHub，`sites` 指向 OpenAI Sites 的源码仓库，二者用途不同，请勿删除 Sites 配置。
 
 ## Roadmap
 
