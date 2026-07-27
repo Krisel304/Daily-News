@@ -21,6 +21,90 @@ type SavedStory = { storyId: string; folder: string; savedAt: string };
 
 const STORIES: Story[] = [
   {
+    id: "nvidia-korea-ai-infrastructure",
+    title: "At AI Summit, South Korea Outlines Its AI Future With NVIDIA and Partners",
+    source: "NVIDIA Blog",
+    url: "https://blogs.nvidia.com/blog/ai-summit-korea-partners-and-nvidia/",
+    date: "2026-07-27",
+    time: "09:10",
+    stars: 5,
+    topic: "基础设施",
+    brief: "韩国把国家级 AI 工厂、HBM 供应链、物理 AI 与本土研究人才放进同一套产业协作。",
+    summary:
+      "NVIDIA 在 7 月 24 日更新的峰会纪要中披露多项韩国 AI 基础设施计划：NAVER、Brookfield 与 NVIDIA 拟把世宗数据中心的 DSX AI factory 扩至 200MW、约 10 万块 Vera Rubin GPU；SK Group 与 NVIDIA 宣布覆盖算力与 HBM4 的长期合作；Hyundai 则继续推进基于 5 万块 Blackwell GPU 的物理 AI 体系。NVIDIA 还将与 KAIST、首尔大学推进智能体 AI、物理 AI 和 AI for Science 研究。",
+    why: "这不是单一采购，而是算力、存储、模型、汽车与高校共同参与的国家级堆栈。AI 产品人应关注“本地基础设施＋本地模型＋垂直产业”如何改变区域市场的交付成本、合作伙伴与数据主权要求。",
+  },
+  {
+    id: "gemini-36-flash-family",
+    title: "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+    source: "Google",
+    url: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+    date: "2026-07-27",
+    time: "09:08",
+    stars: 5,
+    topic: "模型",
+    brief: "Google 用通用、轻量和安全专用三档 Flash 模型，覆盖智能体的质量、吞吐与纵深防御。",
+    summary:
+      "Google 发布 Gemini 3.6 Flash、3.5 Flash-Lite 与 3.5 Flash Cyber。3.6 Flash 面向编码、知识工作和多模态智能体，官方定价为每百万输入 token 1.50 美元、输出 token 7.50 美元；Flash-Lite 主打高吞吐与低延迟；Flash Cyber 则与 CodeMender 组合，用于查找、验证和修补漏洞，并仅向政府及可信伙伴限量开放。3.6 Flash 与 Flash-Lite 已进入 Gemini API、AI Studio 和企业产品。",
+    why: "同一供应商正在把模型组合拆成“主智能体、低成本子任务、受控高风险专模”。产品团队应按完整任务成功成本设计路由，而不是把所有步骤都交给一个旗舰模型。",
+  },
+  {
+    id: "openai-presence",
+    title: "Introducing OpenAI Presence",
+    source: "OpenAI",
+    url: "https://openai.com/index/introducing-openai-presence/",
+    date: "2026-07-27",
+    time: "09:06",
+    stars: 5,
+    topic: "产品",
+    brief: "OpenAI 把企业智能体从模型调用升级为含权限、评测、升级与持续改进的交付产品。",
+    summary:
+      "OpenAI 发布 Presence，面向客服、销售与内部流程提供语音和聊天智能体。每个部署从具体岗位出发，只获得完成该岗位所需的知识与系统权限，并由企业定义批准动作、升级规则和人工接管点；上线后，Codex 会基于真实会话与升级记录提出改进，团队可在测试后批准发布。Presence 目前通过有限 GA 向符合条件的企业提供，并由 OpenAI FDE 与合作伙伴参与部署。",
+    why: "企业智能体的产品边界正在从“一个会调用工具的模型”扩展到部署、运营和版本治理。真正可规模化的壁垒会是权限设计、可观测性、评测回归与人机交接，而不是演示时的单次成功率。",
+  },
+  {
+    id: "microsoft-databricks-context",
+    title: "Databricks and Microsoft expand partnership to help enterprises bring business context to enterprise AI",
+    source: "Microsoft Source",
+    url: "https://news.microsoft.com/source/2026/07/23/databricks-and-microsoft-expand-partnership-to-help-enterprises-bring-business-context-to-enterprise-ai/",
+    date: "2026-07-27",
+    time: "09:04",
+    stars: 4,
+    topic: "企业",
+    brief: "Microsoft 与 Databricks 把企业数据语义、智能体治理和 Microsoft 365 工作流进一步合并。",
+    summary:
+      "Microsoft 与 Databricks 将合作延长至 2030 年代，并推进 Databricks Genie、Genie Ontology 与 Unity AI Gateway 在 Microsoft 产品栈中的深度集成。企业可在 Azure Databricks 上用可信业务数据为智能体提供上下文，并通过 Unity AI Gateway 统一管理模型、智能体与成本；能力将连接 Entra、OneLake、Power BI、Purview、Foundry、Teams、Copilot 和 Microsoft 365。Databricks 也会扩大对 Azure Cobalt 基础设施的使用。",
+    why: "企业 AI 的竞争焦点正在从模型接入转到“业务语义能否安全进入工作流”。对产品团队而言，身份、数据血缘、治理与成本控制会决定智能体能否越过试点阶段。",
+  },
+  {
+    id: "nvidia-medical-physics-simulation",
+    title: "NVIDIA Open Sources First GPU-Accelerated Medical Physics Simulation Framework",
+    source: "NVIDIA Blog",
+    url: "https://blogs.nvidia.com/blog/medical-physics-simulation-open-source/",
+    date: "2026-07-27",
+    time: "09:02",
+    stars: 4,
+    topic: "物理 AI",
+    brief: "NVIDIA 把医疗机器人难以采集的真实交互，转换成可复用、可审查的 GPU 仿真训练环境。",
+    summary:
+      "NVIDIA 开源 Medical Physics Simulation，这是 Isaac for Healthcare 内面向医疗机器人的 GPU 加速框架。开发者可模拟解剖结构、器械接触与摩擦、传感器输入和 X 光成像，再训练或评估机器人策略；框架结合经典物理仿真与 Cosmos-H Dreams 生成式物理能力。官方引用的基准显示，8,192 个并行训练环境把一项训练从五小时以上缩短到两分钟以内。",
+    why: "医疗物理 AI 的核心瓶颈往往不是策略模型，而是稀缺、昂贵且高风险的训练数据。可审查的合成环境能把验证前移，并为监管证据、失败模式覆盖和跨设备复用提供产品基础。",
+  },
+  {
+    id: "anthropic-economic-index-connector",
+    title: "Ask Claude about the Anthropic Economic Index",
+    source: "Anthropic",
+    url: "https://www.anthropic.com/news/anthropic-economic-index-connector",
+    date: "2026-07-27",
+    time: "09:00",
+    stars: 3,
+    topic: "数据",
+    brief: "Anthropic 把 AI 使用与工作影响的数据集做成 Claude 原生连接器，降低探索门槛。",
+    summary:
+      "Anthropic 上线 Economic Index connector，用户可在 Claude 连接器目录中启用后，直接询问不同行业、职业、地区与任务如何使用 AI，并追溯底层数据。该连接器可在任意 Claude 模型的对话中使用，无需额外安装；完整数据集仍免费开放。Anthropic 同时明确提醒，指数反映的是 Claude 使用模式，不能代表整体劳动力市场。",
+    why: "把研究数据变成可对话、可追溯的产品界面，是“数据产品＋AI”比通用问答更有价值的路径。关键设计点是让用户看到样本边界和原始证据，而不是只给一个看似确定的结论。",
+  },
+  {
     id: "claude-opus-5",
     title: "Introducing Claude Opus 5",
     source: "Anthropic",
@@ -224,7 +308,7 @@ const STORY_DATES = Array.from(new Set(STORIES.map((story) => story.date)))
   .sort((a, b) => b.localeCompare(a))
   .slice(0, 7);
 const CURRENT_DATE = STORY_DATES[0];
-const CURATED_AT = "09:02";
+const CURATED_AT = "09:10";
 
 function dateParts(date: string) {
   const value = new Date(`${date}T00:00:00+08:00`);
@@ -413,7 +497,7 @@ export default function Home() {
                 </p>
                 {activeDate === CURRENT_DATE && (
                   <p className="editor-note">
-                    周末说明：严格过去 24 小时未出现足够的独立官方大事件，本期扩展至 48 小时回看；未收录传闻或重复上架信息。
+                    周末补编：严格过去 24 小时未出现足够的独立官方大事件，本期扩展至最近 7 天中尚未收录的一手更新；未用传闻或重复信息凑数。
                   </p>
                 )}
               </div>
