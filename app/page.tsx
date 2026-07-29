@@ -21,6 +21,76 @@ type SavedStory = { storyId: string; folder: string; savedAt: string };
 
 const STORIES: Story[] = [
   {
+    id: "mcp-specification-2026-07-28",
+    title: "Specification - Model Context Protocol",
+    source: "Model Context Protocol",
+    url: "https://modelcontextprotocol.io/specification/2026-07-28",
+    date: "2026-07-29",
+    time: "10:24",
+    stars: 5,
+    topic: "开发者",
+    brief: "MCP 以无状态核心、正式扩展机制和更严格授权约束，重写智能体连接外部工具的生产基础。",
+    summary:
+      "Model Context Protocol 发布 2026-07-28 版规范。新版移除协议级会话、Mcp-Session-Id 与初始化握手，让每个请求都携带版本和客户端能力；新增 server/discover，并把长任务移入 Tasks 扩展。规范还正式列出 MCP Apps 与 Skills over MCP，要求工具列表支持缓存提示，并强化授权服务器校验，同时弃用 Roots、Sampling、Logging 与旧 HTTP+SSE 路径。",
+    why: "这是一组会影响客户端、服务端和网关实现的破坏性变化，却也显著降低横向扩容和可观测性的复杂度。AI 产品团队应尽快盘点 SDK 兼容性、会话状态设计、授权流程与扩展能力，避免连接器在升级后失效。",
+  },
+  {
+    id: "github-copilot-grok-45",
+    title: "Grok 4.5 is now available in GitHub Copilot",
+    source: "GitHub Changelog",
+    url: "https://github.blog/changelog/2026-07-28-grok-4-5-is-now-available-in-github-copilot/",
+    date: "2026-07-29",
+    time: "10:22",
+    stars: 4,
+    topic: "模型",
+    brief: "GitHub 把 Grok 4.5 纳入 Copilot 全线界面，让长上下文和多档推理直接进入主流编码工作流。",
+    summary:
+      "GitHub 开始在 Copilot 中逐步上线 xAI 的 Grok 4.5。该模型支持文本与图像输入、最高 50 万 token 上下文以及低、中、高三档 reasoning effort，可从 VS Code、Visual Studio、Copilot CLI、云端 coding agent、Copilot app、JetBrains、Xcode 和 Eclipse 选择。它覆盖 Pro、Pro+、Max、Business 与 Enterprise 方案，企业和商业版管理员需手动启用，费用按供应商目录价计入用量账单。",
+    why: "编码助手正从单一默认模型变成可治理的模型市场。产品团队需要把模型选择、任务路由、管理员策略和成本归因一起设计，否则更多模型只会增加操作复杂度，而不会稳定提高交付质量。",
+  },
+  {
+    id: "radisson-hotels-chatgpt-app",
+    title: "Radisson Hotel Group and Accenture Redefine Travel Discovery on ChatGPT",
+    source: "Accenture Newsroom",
+    url: "https://newsroom.accenture.com/news/2026/radisson-hotel-group-and-accenture-redefine-travel-discovery-on-chatgpt",
+    date: "2026-07-29",
+    time: "10:20",
+    stars: 4,
+    topic: "产品",
+    brief: "Radisson 把实时库存、房价和地图结果带进 ChatGPT，品牌开始把 AI 对话当作新的交易入口。",
+    summary:
+      "Radisson Hotel Group 与 Accenture 上线 @RadissonHotels ChatGPT 应用，用户可用自然语言搜索覆盖 100 多个国家、1,000 多家酒店的实时库存、价格、位置、设施与地图结果，并跳转 Radisson 官网完成预订。应用直接连接集团既有系统，前期借助 Accenture AI Merchant Center 的 MCP accelerator 整理和验证内容、库存、房价与预订信号；后续计划加入忠诚度识别、对话内预订、订单修改和 AI concierge。",
+    why: "生成式搜索正在从内容分发渠道变成交易漏斗。面向消费者的 AI 产品应关注实时数据、品牌可见性、结果可操作性与最终归因，品牌方则需要为智能体准备比传统 SEO 更结构化、更实时的商品接口。",
+  },
+  {
+    id: "tenable-hexa-ai-agentic-fleet",
+    title: "Tenable Delivers the Industry’s First Always-On Agentic Fleet for Exposure Management",
+    source: "Tenable",
+    url: "https://investors.tenable.com/news-releases/news-release-details/tenable-delivers-industrys-first-always-agentic-fleet-exposure",
+    date: "2026-07-29",
+    time: "10:18",
+    stars: 4,
+    topic: "安全",
+    brief: "Tenable 让安全智能体保留环境上下文、按日运行并协同修复，把一次性问答推进到持续运营。",
+    summary:
+      "Tenable 为 Tenable One 中的 Hexa AI 增加常驻智能体能力：相互连接的智能体可保留环境上下文、安排日常例行任务，并协同完成多步骤暴露面分析与修复工作。新能力面向 Tenable One Foundation 和 Advanced 客户，将于 2026 年 8 月提供；它与用于发现和保护企业 AI 使用情况的 Tenable AI Exposure 组合，覆盖“用 AI 做安全”和“保护 AI 使用”两条路径。",
+    why: "常驻智能体意味着安全产品必须处理长期状态、任务调度、权限边界和失败恢复，而不只是生成建议。对所有高权限 AI 产品而言，这也是一套可借鉴的运营模型：持续执行必须与审计、最小权限和人工接管同步上线。",
+  },
+  {
+    id: "fujitsu-finance-ai-transformation-platform",
+    title: "Fujitsu initiates development of proprietary AI platform for financial institutions",
+    source: "Fujitsu",
+    url: "https://global.fujitsu/en-global/pr/news/2026/07/28-01",
+    date: "2026-07-29",
+    time: "10:16",
+    stars: 3,
+    topic: "企业",
+    brief: "Fujitsu 以数据主权、金融专用模型和多智能体，把日本金融机构的 AI 从试点推向受控生产环境。",
+    summary:
+      "Fujitsu 宣布从 8 月 1 日开始开发 Uvance for Finance AI Transformation Platform，计划 2027 年 3 月推出。平台基于 Fujitsu Kozuchi Enterprise AI Factory，在专用环境中让金融机构控制数据和运营规则，并组合面向日本金融业务、法规和术语优化的 Takane 大模型、生成式 AI guardrail 以及多类业务智能体。目标场景包括贷款审查、申请文件创建与核验、咨询处理和销售优化。",
+    why: "金融 AI 的竞争不再只是模型准确率，而是能否把数据主权、专业语义、风险可视化和运营支持封装成完整产品。垂直产品团队应把治理能力当作核心体验，而不是部署完成后的合规附加项。",
+  },
+  {
     id: "nvidia-korea-ai-infrastructure",
     title: "At AI Summit, South Korea Outlines Its AI Future With NVIDIA and Partners",
     source: "NVIDIA Blog",
@@ -308,7 +378,7 @@ const STORY_DATES = Array.from(new Set(STORIES.map((story) => story.date)))
   .sort((a, b) => b.localeCompare(a))
   .slice(0, 7);
 const CURRENT_DATE = STORY_DATES[0];
-const CURATED_AT = "09:10";
+const CURATED_AT = "10:24";
 
 function dateParts(date: string) {
   const value = new Date(`${date}T00:00:00+08:00`);
@@ -497,7 +567,7 @@ export default function Home() {
                 </p>
                 {activeDate === CURRENT_DATE && (
                   <p className="editor-note">
-                    周末补编：严格过去 24 小时未出现足够的独立官方大事件，本期扩展至最近 7 天中尚未收录的一手更新；未用传闻或重复信息凑数。
+                    过去 24 小时核验：本期仅收录 5 条可追溯到官方规范、产品公告或公司新闻室的独立更新；未用旧闻、传闻或重复事件补足数量。
                   </p>
                 )}
               </div>
