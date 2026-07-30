@@ -21,6 +21,76 @@ type SavedStory = { storyId: string; folder: string; savedAt: string };
 
 const STORIES: Story[] = [
   {
+    id: "microsoft-fy26-cloud-ai-results",
+    title: "Microsoft Cloud and AI strength fuels fourth quarter results",
+    source: "Microsoft Source",
+    url: "https://news.microsoft.com/source/2026/07/29/microsoft-cloud-and-ai-strength-fuels-fourth-quarter-results-4/",
+    date: "2026-07-30",
+    time: "10:04",
+    stars: 5,
+    topic: "商业",
+    brief: "Microsoft 365 Copilot 付费席位突破 3,000 万，AI 产品的企业采用首次显现出更清晰的规模信号。",
+    summary:
+      "Microsoft 公布截至 6 月 30 日的 FY26 第四财季业绩：季度营收 900 亿美元，同比增长 18%；Microsoft Cloud 营收 593 亿美元，同比增长 27%；Azure 与其他云服务收入增长 43%。公司同时披露 Azure 年收入首次超过 1,000 亿美元，Microsoft 365 Copilot 付费席位超过 3,000 万，并在非 GAAP 结果中单列 OpenAI 投资影响。",
+    why: "这组数据把企业 AI 从试用热度推进到可观测的付费采用和云基础设施增长。AI 产品团队应关注席位数之外的活跃使用、任务产出与增量收入，避免把采购规模误当成最终价值实现。",
+  },
+  {
+    id: "databricks-genie-code-agentic-converter",
+    title: "Convert proprietary code to open ANSI SQL with Genie Code",
+    source: "Databricks",
+    url: "https://www.databricks.com/blog/convert-proprietary-code-open-ansi-sql-genie-code",
+    date: "2026-07-30",
+    time: "10:02",
+    stars: 4,
+    topic: "开发者",
+    brief: "Databricks 用并行子智能体规划、转换和校验遗留 SQL，把数据仓库迁移变成可监控的产品流程。",
+    summary:
+      "Databricks 将 Genie Code 的 agentic converter 推入 Beta，支持把 T-SQL、Snowflake、Redshift、Oracle、BigQuery 与 Teradata 方言转换为开放 ANSI SQL。迁移项目会分析代码复杂度和对象血缘，识别必须一起迁移的依赖；运行时由多组子智能体并行转换文件、迭代修复错误，并校验语法与业务语义。团队还可用自定义 skills 把统一规则应用到整个代码库。",
+    why: "这是智能体从生成代码走向承担高风险迁移项目的具体形态：规划、并行执行、验证与人工复核被放进同一工作台。类似产品的壁垒会来自可追溯的语义校验和批量治理，而不是单段代码转换质量。",
+  },
+  {
+    id: "aws-agentcore-private-key-jwt",
+    title: "Authenticate with Private Key JWT using Amazon Bedrock AgentCore Identity",
+    source: "AWS",
+    url: "https://aws.amazon.com/blogs/machine-learning/authenticate-with-private-key-jwt-using-amazon-bedrock-agentcore-identity/",
+    date: "2026-07-30",
+    time: "10:00",
+    stars: 4,
+    topic: "安全",
+    brief: "AgentCore 让智能体用 KMS 签名 JWT 获取下游令牌，减少生产系统对共享 OAuth 密钥的依赖。",
+    summary:
+      "Amazon Bedrock AgentCore Identity 现已支持 Private Key JWT 客户端认证。智能体向身份提供商申请访问令牌时，由 AWS KMS 使用非对称私钥签署短期 JWT assertion；身份提供商只保存公钥，私钥不会离开 KMS。能力支持 machine-to-machine、三方 OAuth 和 OAuth 2.0 Token Exchange 三类授权流程，并可通过 CloudTrail 记录访问。",
+    why: "智能体进入 CRM、订单和内部 API 后，身份已成为核心产品能力。用硬件保护的签名替代长期共享密钥，能降低泄露面，也让团队更容易建立按智能体身份授权、轮换和审计的生产基线。",
+  },
+  {
+    id: "memsecbench-agent-memory-poisoning",
+    title: "MemSecBench: Tracking Agent Memory Poisoning from Persistence to Consequence and Repair",
+    source: "arXiv",
+    url: "https://arxiv.org/abs/2607.27080",
+    date: "2026-07-30",
+    time: "09:58",
+    stars: 4,
+    topic: "研究",
+    brief: "新基准显示恶意内容一旦进入智能体长期记忆，可能跨会话留存并在之后悄悄影响真实动作。",
+    summary:
+      "MemSecBench 用 310 个案例、48 类真实场景和 Write–Execute–Forget 流程，评估两种智能体框架、四种记忆后端与三种模型组成的 24 个配置。论文报告，恶意记忆在全部配置中有 84.2% 得以留存，完整 Write–Execute 攻击链成功率为 50.3%；不同记忆栈在端到端攻击和选择性修复上的差异分别最高达到 16.1 与 41.3 个百分点。",
+    why: "长期记忆把提示注入从一次会话风险放大成持续供应链风险。带记忆的 AI 产品需要为写入、召回、动作和删除分别建立来源标记、隔离、审计与可验证遗忘，而不能只在生成出口做内容过滤。",
+  },
+  {
+    id: "cost-aware-tool-acquisition-llm-agents",
+    title: "Scores Are Not Decisions: Cost-Aware Stopping for Tool Acquisition in LLM Agents",
+    source: "arXiv",
+    url: "https://arxiv.org/abs/2607.27083",
+    date: "2026-07-30",
+    time: "09:56",
+    stars: 3,
+    topic: "研究",
+    brief: "研究把工具选择从相关性排序改成成本感知的停止决策，减少无效上下文、费用和隐私暴露。",
+    summary:
+      "论文提出 CAM-DF，在工具相关性排序之上判断何时停止继续获取工具，并把不同调用成本直接纳入决策。方法在五类工具使用领域的 1,343 个任务上评估；在 τ-bench Retail 的多种排序器和成本设置中取得最高可部署收益。实时执行实验中，它比开放全部工具少暴露 37% 的工具，同时保持相近任务成功率，且无需微调底层大模型。",
+    why: "智能体连接器越多，不代表任务越可靠；每增加一个工具都会消耗上下文、预算并扩大权限面。产品团队应把工具选择做成可度量的成本—收益决策，联动延迟、隐私和任务成功率，而不是只依赖相关性阈值。",
+  },
+  {
     id: "mcp-specification-2026-07-28",
     title: "Specification - Model Context Protocol",
     source: "Model Context Protocol",
@@ -378,7 +448,7 @@ const STORY_DATES = Array.from(new Set(STORIES.map((story) => story.date)))
   .sort((a, b) => b.localeCompare(a))
   .slice(0, 7);
 const CURRENT_DATE = STORY_DATES[0];
-const CURATED_AT = "10:24";
+const CURATED_AT = "10:04";
 
 function dateParts(date: string) {
   const value = new Date(`${date}T00:00:00+08:00`);
@@ -567,7 +637,7 @@ export default function Home() {
                 </p>
                 {activeDate === CURRENT_DATE && (
                   <p className="editor-note">
-                    过去 24 小时核验：本期仅收录 5 条可追溯到官方规范、产品公告或公司新闻室的独立更新；未用旧闻、传闻或重复事件补足数量。
+                    过去 24 小时核验：本期收录 5 条可追溯到公司官方公告、产品博客或原始论文页的独立更新；研究结果按作者报告表述，未用传闻或重复事件补足数量。
                   </p>
                 )}
               </div>
