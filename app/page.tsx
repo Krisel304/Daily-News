@@ -524,11 +524,22 @@ const CURATED_AT = "10:10";
 function dateParts(date: string) {
   const value = new Date(`${date}T00:00:00+08:00`);
   return {
-    day: new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(value).toUpperCase(),
-    short: new Intl.DateTimeFormat("en-GB", { day: "2-digit", month: "long" })
+    day: new Intl.DateTimeFormat("en-US", {
+      weekday: "long",
+      timeZone: "Asia/Shanghai",
+    }).format(value).toUpperCase(),
+    short: new Intl.DateTimeFormat("en-GB", {
+      day: "2-digit",
+      month: "long",
+      timeZone: "Asia/Shanghai",
+    })
       .format(value)
       .toUpperCase(),
-    chinese: new Intl.DateTimeFormat("zh-CN", { month: "long", day: "numeric" }).format(value),
+    chinese: new Intl.DateTimeFormat("zh-CN", {
+      month: "long",
+      day: "numeric",
+      timeZone: "Asia/Shanghai",
+    }).format(value),
   };
 }
 
