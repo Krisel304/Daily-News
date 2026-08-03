@@ -21,6 +21,77 @@ type SavedStory = { storyId: string; folder: string; savedAt: string };
 
 const STORIES: Story[] = [
   {
+    id: "eu-ai-act-enforcement-2026",
+    title:
+      "The Commission’s enforcement powers related to AI Act obligations for providers of the most advanced models enter into application on 2 August 2026. What will change then?",
+    source: "EU AI Act Service Desk",
+    url: "https://ai-act-service-desk.ec.europa.eu/fr/node/999",
+    date: "2026-08-03",
+    time: "10:10",
+    stars: 5,
+    topic: "政策",
+    brief: "欧盟开始执行生成内容透明度与通用 AI 模型规则，AI Office 正式获得模型评估、整改和处罚权。",
+    summary:
+      "自 8 月 2 日起，欧盟 AI 法案中针对特定 AI 系统的透明度要求、禁止性实践和通用 AI 模型规则进入可执法阶段。面向自然人交互或生成内容的系统需要落实告知、机器可读标记等要求；8 月 2 日前已上市的系统，其 Article 50(2) 标记与检测义务可延至 12 月 2 日。AI Office 可索取信息、访问模型开展评估、要求降低风险，并在必要时处以最高全球年营业额 3% 的罚款或要求限制、撤回模型。",
+    why: "这把“AI 生成”提示、内容溯源、模型文档和风险评估从产品最佳实践变成可执行义务。服务欧盟用户的团队应立即核对交互告知、生成内容标记、供应商证据和投诉处理链路，而不要误以为所有高风险系统规则已经同时生效。",
+  },
+  {
+    id: "openai-astra-ten-math-advances",
+    title: "Ten advances in mathematics and theoretical computer science",
+    source: "OpenAI",
+    url: "https://openai.com/index/ten-advances-in-mathematics/",
+    date: "2026-08-03",
+    time: "10:09",
+    stars: 5,
+    topic: "研究",
+    brief: "OpenAI 首次披露下一代模型 Astra，并称其为 10 个长期开放的数学与理论计算机问题生成了新结果。",
+    summary:
+      "OpenAI 发布论文与推理过程，报告内部版 Astra 在高维球堆积、编码理论、非 sofic 群、算术电路复杂性、量子并行重复和格密码等 10 个长期问题上得到新结果。公司称搜索这些解法所需 token 按 Sol API 价格约合 2,000 美元；数学论证由模型生成，人类与同一模型整理成论文，之后由模型生成 Lean 形式化证书。以上是 OpenAI 的研究报告，仍需独立数学界持续核验。",
+    why: "如果这些结果经得起审查，前沿模型的价值边界将从检索和辅助证明推进到生成可形式化验证的新研究。AI 产品团队更应关注“探索—证据—形式化—同行复核”的完整工作流，而不是把模型自述或单一基准直接包装成发现。",
+  },
+  {
+    id: "gemini-robotics-2",
+    title: "Gemini Robotics 2",
+    source: "Google DeepMind",
+    url: "https://deepmind.google/models/gemini-robotics/",
+    date: "2026-08-03",
+    time: "10:08",
+    stars: 5,
+    topic: "物理 AI",
+    brief: "Google 把全身控制、具身推理和本地运行拆成三类模型，让机器人从单任务动作走向多机协作。",
+    summary:
+      "Google DeepMind 发布 Gemini Robotics 2 系列：VLA 模型把视觉与语言输入转换为从双臂到完整人形机器人的运动控制；Gemini Robotics ER 2 负责真实空间理解、长程多步骤规划以及人与多机器人的协调；On-Device 2 则面向机器人硬件本地运行。官方称系统能在未专门训练的任务上适应新情境，并正与 100 多个可信测试方开展部署验证。",
+    why: "具身 AI 的产品栈正在形成类似数字智能体的“规划模型＋执行模型＋边缘运行时”。做机器人或现场自动化的团队需要把动作安全、实时打断、硬件适配和多机权限纳入同一产品架构，而不能只比较演示视频中的任务完成度。",
+  },
+  {
+    id: "openai-gpt-56-price-performance",
+    title: "Advancing the price-performance frontier with GPT‑5.6",
+    source: "OpenAI",
+    url: "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/",
+    date: "2026-08-03",
+    time: "10:07",
+    stars: 5,
+    topic: "模型",
+    brief: "GPT‑5.6 Luna 降价 80%、Terra 降价 20%，低成本子智能体与旗舰推理的分工进一步清晰。",
+    summary:
+      "OpenAI 将 GPT‑5.6 Luna 的 API 价格下调 80% 至每百万输入 token 0.20 美元、输出 token 1.20 美元，Terra 下调 20% 至输入 2 美元、输出 12 美元；Sol 价格不变。API 同时用 Fast mode 取代 Priority Processing，官方称 Sol 最快可获得标准模式 2.5 倍速度，价格为两倍。ChatGPT 与 Codex 订阅价格不变，但 Terra、Luna 消耗的额度下降。",
+    why: "大幅降价会把批量分类、结构化提取和后台智能体循环推向新的经济拐点。产品团队应重新跑任务级评测与路由实验，用成功率、完整延迟和总 token 成本决定哪些步骤交给 Luna、Terra 或 Sol，而不是沿用发布前的默认模型。",
+  },
+  {
+    id: "amazon-q2-2026-ai-chip-run-rate",
+    title: "Amazon.com announces second quarter results",
+    source: "Amazon",
+    url: "https://www.aboutamazon.com/news/company-news/amazon-earnings-q2-2026-report",
+    date: "2026-08-03",
+    time: "10:06",
+    stars: 4,
+    topic: "商业",
+    brief: "AWS AI 与芯片业务年化收入均突破 250 亿美元，但 AI 基建投入也把自由现金流拉至负值。",
+    summary:
+      "Amazon 披露 2026 年第二季度 AWS 营收 422 亿美元，同比增长 37%，是 18 个季度以来最快增速；AWS 的 AI 业务和芯片业务年化收入分别超过 250 亿美元，且都保持三位数同比增长。与此同时，过去 12 个月自由现金流由上年同期流入 182 亿美元转为流出 76 亿美元，公司称主要原因是以 AI 为主的物业和设备采购同比增加 661 亿美元。",
+    why: "这同时给出 AI 云需求规模和资本代价的硬信号：推理、模型市场和自研芯片正在形成真实收入，但基础设施扩张显著吞噬现金。AI 产品人评估平台依赖时，应把价格、容量承诺、芯片可替代性和供应商持续投入能力放在同一张风险表中。",
+  },
+  {
     id: "microsoft-fy26-cloud-ai-results",
     title: "Microsoft Cloud and AI strength fuels fourth quarter results",
     source: "Microsoft Source",
@@ -448,7 +519,7 @@ const STORY_DATES = Array.from(new Set(STORIES.map((story) => story.date)))
   .sort((a, b) => b.localeCompare(a))
   .slice(0, 7);
 const CURRENT_DATE = STORY_DATES[0];
-const CURATED_AT = "10:04";
+const CURATED_AT = "10:10";
 
 function dateParts(date: string) {
   const value = new Date(`${date}T00:00:00+08:00`);
@@ -637,7 +708,7 @@ export default function Home() {
                 </p>
                 {activeDate === CURRENT_DATE && (
                   <p className="editor-note">
-                    过去 24 小时核验：本期收录 5 条可追溯到公司官方公告、产品博客或原始论文页的独立更新；研究结果按作者报告表述，未用传闻或重复事件补足数量。
+                    过去 24 小时严格核验仅 1 条达到门槛；本期透明扩展为周末 96 小时回看，补入 4 条尚未收录的公司官方公告与研究发布。OpenAI 数学结果按公司报告表述并保留独立核验提示，未用传闻或重复事件凑数。
                   </p>
                 )}
               </div>
