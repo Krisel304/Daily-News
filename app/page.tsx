@@ -21,6 +21,90 @@ type SavedStory = { storyId: string; folder: string; savedAt: string };
 
 const STORIES: Story[] = [
   {
+    id: "openai-chatgpt-flexible-rate-card-2026-08-07",
+    title: "ChatGPT Rate Card (Business, Enterprise/Edu)",
+    source: "OpenAI Help Center",
+    url: "https://help.openai.com/en/articles/11481834",
+    date: "2026-08-07",
+    time: "10:20",
+    stars: 4,
+    topic: "商业",
+    brief: "OpenAI 更新企业版积分价目表，PowerPoint 从今日起结束免费期，办公智能体正式进入按 token 计费阶段。",
+    summary:
+      "OpenAI 最新价目表显示，Business、Enterprise 与 Edu 的 GPT-5.6 Sol 每条消息约 10 credits，Sol Pro 约 50 credits，Agent mode 与 deep research 分别约 30 与 50 credits。ChatGPT for PowerPoint 对 Business 和 Enterprise 的免费期截至 8 月 6 日，之后与 Excel/Sheets、Workspace Agents 一样按输入、缓存输入与输出 token 计费；官方给出的典型 PowerPoint 任务区间为每条 10–50 credits。",
+    why: "办公智能体的成本正从席位费变成“席位＋任务消耗”。产品团队需要把文件大小、缓存命中、任务拆分和重试率纳入单位经济模型，并在交付前给管理员清晰的预算、告警与成本归因。",
+  },
+  {
+    id: "bitter-lesson-programmatic-tool-calling",
+    title: "The Bitter Lesson of Tool Calling",
+    source: "arXiv",
+    url: "https://arxiv.org/abs/2608.06370",
+    date: "2026-08-07",
+    time: "10:18",
+    stars: 5,
+    topic: "研究",
+    brief: "14 个模型的对照实验显示，用程序组织工具调用通常优于原生 JSON，智能体接口可能从 schema 列表转向可执行代码。",
+    summary:
+      "论文在 BFCL v4 上比较 14 个语言模型的 programmatic tool calling 与原生 JSON 调用。作者报告，程序化调用在 14 个模型中的 11 个持平或更好，GPT-5.6 系列相对 JSON 基线提升 10.6%；在并行 fan-out 场景中有 13 个模型持平或胜出，并在长上下文衰减条件下保持稳定，而 JSON 基线平均下降 2.3%。以上数字来自论文作者，尚待独立复现。",
+    why: "这直接影响智能体运行时的协议设计：复杂任务更适合用代码表达循环、并行和数据依赖。团队可把程序化工具调用加入评测，但仍需沙箱、权限限制、静态检查和可审计执行，不能把更高成功率等同于更安全。",
+  },
+  {
+    id: "mist-scope-selective-context-trust",
+    title: "Learning When to Trust via Selective Context Preference Optimization",
+    source: "arXiv",
+    url: "https://arxiv.org/abs/2608.06377",
+    date: "2026-08-07",
+    time: "10:16",
+    stars: 4,
+    topic: "安全",
+    brief: "MIST 基准同时测试正确、误导、无关与干净上下文，避免把“拒绝所有外部信息”误判成稳健。",
+    summary:
+      "研究提出人工标注的 MIST：把同一推理题配成干净、误导、正确和无关上下文四种条件，并用 SC2W 统计误导信号把原本正确答案翻转为错误的频率。作者称这种脆弱性在所测模型中普遍存在；随后用 SCOPE 从成对失败样本做偏好优化，在多个开源模型上降低 SC2W，同时维持模型利用正确与无关上下文的能力。结论来自预印本，尚待独立复现。",
+    why: "RAG、连接器和网页智能体既不能盲信检索结果，也不能为防注入而忽略所有上下文。更合理的产品指标应同时衡量“拒绝坏证据”和“采用好证据”，并把来源、冲突检测与不确定性呈现放进回答链路。",
+  },
+  {
+    id: "calibforge-terminal-agent-training-data",
+    title: "CalibForge: Adversarial Solver Calibration for Scaling Learnable Terminal Tasks",
+    source: "arXiv",
+    url: "https://arxiv.org/abs/2608.06352",
+    date: "2026-08-07",
+    time: "10:14",
+    stars: 4,
+    topic: "开发者",
+    brief: "CalibForge 用强弱求解器分歧自动校准终端任务，让训练数据不只“可执行”，还落在真正有学习价值的难度区间。",
+    summary:
+      "CalibForge 先生成可执行、可验证的终端任务，再根据多个求解器的实际表现对任务做对抗式修订，目标是让强模型通过、弱模型失败，或让异构求解器形成有信息量的分歧。作者由此构建 5,431 个任务，并报告训练后的模型在 Terminal-Bench 2.0、SWE-bench Pro 与 Doc2Repo 上相对对应基座最高分别提升 24.71、27.68 与 30.04 个百分点。以上为作者报告，尚待复现。",
+    why: "智能体训练数据的瓶颈正在从数量转向“可验证且难度合适”。产品与研究团队应跟踪题目泄漏、求解器偏置和跨基准迁移，避免用单一强模型给自己出题、判题并证明自己进步。",
+  },
+  {
+    id: "vlm-zero-shot-control-grounding",
+    title: "Visual Grounding in Zero-Shot Vision-Language Control",
+    source: "arXiv",
+    url: "https://arxiv.org/abs/2608.06154",
+    date: "2026-08-07",
+    time: "10:12",
+    stars: 4,
+    topic: "物理 AI",
+    brief: "对 32,874 次调用的消融测试发现，多数零样本 VLM 控制器并未真正依据画面决策，简单保守策略甚至可能更强。",
+    summary:
+      "研究在两种具身系统、三个模拟器中评估 9 个直接动作模型、6 个结构化本地 VLM 与一个探索性 VLM-MPC 层级，并用盲图、重复输入、左右镜像和非视觉基线检查真实视觉 grounding。作者报告，多个模型几乎不随图像变化，且没有本地 VLM 同时满足纵向与横向 grounding 标准；模块化方案更适合作为有限的危险识别助手，而非端到端零样本控制器。结论尚待独立复现。",
+    why: "物理 AI 演示中的成功轨迹可能来自环境惯性或保守动作，而不是视觉理解。产品验收必须加入输入消融、镜像等变、动作回放和安全接管测试，并把 VLM 限制在可验证的感知或建议角色。",
+  },
+  {
+    id: "synaptics-fy26-edge-ai-results",
+    title: "Synaptics Reports Fourth Quarter and Full Year Fiscal 2026 Results",
+    source: "Synaptics",
+    url: "https://investor.synaptics.com/news-releases/news-release-details/synaptics-reports-fourth-quarter-and-full-year-fiscal-2026",
+    date: "2026-08-07",
+    time: "10:10",
+    stars: 3,
+    topic: "芯片",
+    brief: "Synaptics Core IoT 全年销售增长 43%，AI-native Astra SR 微控制器计划今秋送样，边缘 AI 需求开始形成硬件收入信号。",
+    summary:
+      "Synaptics 公布 FY26 全年营收 12 亿美元，同比增长 11%；Core IoT 产品销售增长 43%，占总销售 33%，第四季度 Core IoT 同比增长 24%。公司称 Physical AI 与机器人客户接洽、design wins 和项目管线继续增加，面向新兴 Edge AI 应用的 Astra SR 系列微控制器仍按计划在今秋开始送样。公司正等待 onsemi 全股票收购完成，因此未提供下一季度展望。",
+    why: "生成式 AI 之外，端侧推理正把连接、传感和低功耗计算打包成新的硬件平台。做设备产品的团队应关注送样到量产的周期、工具链成熟度、内存与功耗约束，而不是只看云端模型能力。",
+  },
+  {
     id: "eu-ai-act-enforcement-2026",
     title:
       "The Commission’s enforcement powers related to AI Act obligations for providers of the most advanced models enter into application on 2 August 2026. What will change then?",
@@ -519,7 +603,7 @@ const STORY_DATES = Array.from(new Set(STORIES.map((story) => story.date)))
   .sort((a, b) => b.localeCompare(a))
   .slice(0, 7);
 const CURRENT_DATE = STORY_DATES[0];
-const CURATED_AT = "10:10";
+const CURATED_AT = "10:20";
 
 function dateParts(date: string) {
   const value = new Date(`${date}T00:00:00+08:00`);
@@ -719,7 +803,7 @@ export default function Home() {
                 </p>
                 {activeDate === CURRENT_DATE && (
                   <p className="editor-note">
-                    过去 24 小时严格核验仅 1 条达到门槛；本期透明扩展为周末 96 小时回看，补入 4 条尚未收录的公司官方公告与研究发布。OpenAI 数学结果按公司报告表述并保留独立核验提示，未用传闻或重复事件凑数。
+                    严格核验过去 24 小时，收录 2 条官方产业更新与 4 篇刚提交的研究预印本；研究数字均按作者报告表述并提示尚待独立复现。未使用传闻、社交平台线索或 8 月 4–5 日旧发布补数。
                   </p>
                 )}
               </div>
