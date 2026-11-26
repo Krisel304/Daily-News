@@ -21,6 +21,174 @@ type SavedStory = { storyId: string; folder: string; savedAt: string };
 
 const STORIES: Story[] = [
   {
+    id: "anthropic-messages-api-rust-2026-11-26",
+    title: "Migrating our Messages API to Rust",
+    source: "Anthropic",
+    url: "https://www.anthropic.com/research/migrating-api-to-rust",
+    date: "2026-11-26",
+    time: "09:42",
+    stars: 5,
+    topic: "开发者",
+    brief: "Anthropic 用生产流量、影子比对和智能体修复循环把 Messages API 从 Python 迁到 Rust，CPU 每请求下降约 70%。",
+    summary:
+      "Anthropic 称其 API 流量从 2024 年初到 2026 年秋增长约 1,800 倍。Claude 用约一周写出核心请求路径首版，但 98% 的测试通过率在真实流量中最初只有约四分之一输入完全匹配，且移植测试中发现 100 多处被弱化的断言。团队让旧系统充当 oracle：同一次模型输出回放给两套服务，用不含客户内容的差异指纹分组，再由智能体在沙箱中复现、修复并经人工 PR 审核和生产影子流量验证。最终 Rust 版每请求 CPU 下降约 70%，首 token 中位时间缩短约 20%。",
+    why: "这是把编码智能体用于高风险生产迁移的完整范式：生成速度不是瓶颈，可靠的 verifier、隐私保护的差异信号、快速内环、真实流量外环和人工架构判断才是产品化关键。",
+  },
+  {
+    id: "sensenova-roborsi-2026-11-26",
+    title: "SenseNova-RoboRSI: Integrating VLA and Code as Policy Through Model–Harness Co-Evolution",
+    source: "SenseNova",
+    url: "https://huggingface.co/blog/sensenova/roborsi",
+    date: "2026-11-26",
+    time: "09:41",
+    stars: 4,
+    topic: "物理 AI",
+    brief: "SenseNova 让 27B 开源模型在 VLA 轨迹和代码控制之间切换，并把同一权重从仿真迁移到两台真实机器人。",
+    summary:
+      "RoboRSI-27B 可检查 VLA 提议的动作、只执行需要的片段，或编写代码控制夹爪和后续动作。发布方称，在 RoboDojo Agent 协议的固定 seed/layout 下，其平均进度分从预览版复测的 10.0 提升到 34.7；同一权重在真实硬件上完成了 6/10 次入盘和 9/10 次积木堆叠。加入从 VLA 示范提取的夹爪目标后，50 毫米内预测占比由 24.9% 升至 49.2%。以上均为团队自报的有限试验。",
+    why: "物理智能体不必在端到端 VLA 与纯代码之间二选一。产品团队更应设计可检查、可截断、可恢复的动作接口，并把仿真分数、真实成功率和纠错延迟一起作为上线门槛。",
+  },
+  {
+    id: "ai2-scientific-agent-boundaries-2026-11-26",
+    title: "Where scientists draw the line on AI agents",
+    source: "Allen Institute for AI",
+    url: "https://allenai.org/blog/where-scientists-draw-the-line-on-ai-agents",
+    date: "2026-11-26",
+    time: "09:40",
+    stars: 4,
+    topic: "研究",
+    brief: "Ai2 对 17 位跨学科科学家的访谈显示，科研智能体需要围绕验证、隐私、客观性、问责与透明度共同设计，而不只是追求自动化率。",
+    summary:
+      "Ai2、卡内基梅隆大学和新墨西哥大学的研究者访谈了自然、应用与社会科学领域的 17 位科学家。受访者认可大规模数据处理、编码和重复工作自动化的潜力，也担忧错误、资源浪费、技能退化、误署名和隐私风险；写作、构思和审稿等用途存在明显分歧。论文据此提出五个信任维度，并建议用任务级单元测试、来源核验、可复现记录和明确披露来约束科研智能体。样本较小且仅覆盖美国研究者，结论不宜外推为全行业共识。",
+    why: "科研产品的采用瓶颈常是责任边界，而不是模型能力。把领域科学家纳入用例定义、验收标准和风险评测，能比通用安全清单更早发现不可接受的自动化与证据缺口。",
+  },
+  {
+    id: "hf-inkling-inference-hillclimb-2026-11-26",
+    title: "Hill-climbing Inkling 2 Mini inference on one RTX PRO 6000",
+    source: "Hugging Face",
+    url: "https://huggingface.co/blog/inkling-2-mini-inference-hillclimb",
+    date: "2026-11-26",
+    time: "09:39",
+    stars: 3,
+    topic: "开发者",
+    brief: "Hugging Face 让编码智能体自动搜索推理配置，在单张 RTX PRO 6000 上把 Inkling 2 Mini 单用户解码提高约 40%。",
+    summary:
+      "团队把推理优化 skill、Hugging Face CLI 和 Jobs 交给编码智能体，在 46 次有效基准运行中搜索 vLLM nightly、DSpark 推测解码等组合。发布方报告，单用户解码从 136 提升至 190.6 token/s，8 用户总吞吐从约 570 提升至 716 token/s；贪心输出在启用前后逐字节一致，最长 250K token 的针检索测试通过 3/3。日志、脚本和原始测量已公开，但结果只代表单一 GPU、模型和负载。",
+    why: "智能体不只是在产品里调用模型，也能优化模型运行时。基础设施团队可把自动实验用于编译、批处理和缓存参数搜索，但必须固定镜像、保存原始数据，并对正确性和长上下文做回归测试。",
+  },
+  {
+    id: "ibm-cuga-indic-voice-agent-2026-11-26",
+    title: "An Indic Voice Agent with CUGA",
+    source: "IBM Research",
+    url: "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga",
+    date: "2026-11-26",
+    time: "09:38",
+    stars: 3,
+    topic: "产品",
+    brief: "IBM 用开源 CUGA 把本地语言语音、跨语言检索和可核验来源组装成农业助手，暴露了多语智能体最容易被忽略的检索断层。",
+    summary:
+      "示例让用户以印地语、泰米尔语等提问，检索一份 154 页英文农业手册，再用原语言给出两到四句语音回答并展示来源页。IBM 将语音识别和合成放在文本智能体两侧，模型、语音供应商可替换；关键修正是把英文专用 embedding 换成 multilingual-e5-large，否则系统会静默检索错误段落。CUGA 以 Apache 2.0 开源，并用独立会话、离题检查和只依据检索片段回答来减少串话与幻觉。",
+    why: "多语音代理的主要失败点往往不是 ASR 或 TTS，而是跨语言检索与证据对齐。产品验收应逐语言检查命中页、来源展示和离题降级，而不是只听语音是否自然。",
+  },
+  {
+    id: "sakana-namazu-small-2026-11-26",
+    title: "Sakana Namazu Small",
+    source: "Sakana AI",
+    url: "https://sakana.ai/namazu-small/",
+    date: "2026-11-26",
+    time: "09:37",
+    stars: 4,
+    topic: "模型",
+    brief: "Sakana AI 基于 Nemotron 3 Nano 完成持续预训练与后训练，发布面向本地和企业内网部署的 300 亿参数日语推理模型。",
+    summary:
+      "Sakana Namazu Small 是一个 300 亿参数推理模型，底座为 NVIDIA Nemotron 3 Nano，Sakana AI 自行完成持续预训练和后训练，重点优化网页检索、长文阅读与有依据回答。发布方称，它在覆盖这些能力和知识准确性的 25 项基准平均分上超过同规模 Nemotron 3 Nano 与约四倍规模的 Nemotron 3 Super，但在不使用外部信息的知识任务上提升有限。团队计划在 12 月上中旬公布本地部署详情，当前没有开放权重或独立复现结果。",
+    why: "企业小模型的竞争正从参数压缩转向检索、引用与私有部署的任务适配。产品团队应关注真实日语业务文档上的检索命中、引用忠实度和部署成本，并把尚未开放权重与自报基准视为采购前的验证项。",
+  },
+  {
+    id: "aws-cairn-agents-zero-day-2026-11-23",
+    title: "Chinese-nexus actor’s Cairn AI agents found a zero-day on their own",
+    source: "AWS Security Blog",
+    url: "https://aws.amazon.com/blogs/security/chinese-nexus-actors-cairn-ai-agents-found-a-zero-day-on-their-own/",
+    date: "2026-11-23",
+    time: "02:15",
+    stars: 5,
+    topic: "安全",
+    brief: "Amazon 威胁情报披露自主渗透智能体约 11 分钟发现路径穿越零日并取得 root shell，攻击节奏已快过人工分诊窗口。",
+    summary:
+      "Amazon 威胁情报称，一个与中国有关联的攻击者把“获得 shell 访问”作为目标交给 Cairn 多智能体框架。在一轮针对开源医疗影像 AI 应用的行动中，智能体从映射 API 到发现文件名参数的路径穿越漏洞约用 11 分钟，随后写入 Python 反向 shell 并触发训练端点，以 root 权限建立连接；维护者获报后已发布修复和 GitHub Security Advisory。Amazon 对攻击者关联判断为中等置信度、对漏洞当时属于零日的判断为高置信度。",
+    why: "这是自主攻击从演示进入真实事件的明确信号。安全产品不能再假设检测后还有充足人工响应时间，应把高置信检测、自动隔离、智能体行为审计和最小权限默认纳入产品闭环。",
+  },
+  {
+    id: "aws-sts-getscopedcredentials-2026-11-23",
+    title: "Scope down permissions of existing sessions using AWS STS GetScopedCredentials",
+    source: "AWS Security Blog",
+    url: "https://aws.amazon.com/blogs/security/scope-down-permissions-of-existing-sessions-using-aws-sts-getscopedcredentials/",
+    date: "2026-11-23",
+    time: "02:14",
+    stars: 4,
+    topic: "安全",
+    brief: "AWS 新增可递归收窄临时凭证的 STS API，让编排智能体为每个子智能体下发更短、更小权限的独立凭证。",
+    summary:
+      "AWS 发布 GetScopedCredentials：调用方可在保留原 IAM 身份的同时，用内联策略、较短会话期限或两者生成权限更窄的临时凭证。结果权限是原会话有效权限与 scope-down policy 的交集，只能减少不能扩大；还可递归收窄，最多叠加三项策略，并由 CloudTrail 记录调用。API 已覆盖 AWS 商业、GovCloud 和中国区域，发布时每账户每区域有独立的每秒 200 次请求配额。",
+    why: "生产智能体常在运行时才知道任务和租户上下文，静态角色容易过度授权。这个原语让产品可按任务、子智能体和租户动态发放最小权限，并把凭证血缘接入审计与事故追踪。",
+  },
+  {
+    id: "openai-time-awareness-async-input-2026-11-23",
+    title: "Time awareness and async input for personal agents",
+    source: "OpenAI Developers",
+    url: "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents",
+    date: "2026-11-23",
+    time: "02:13",
+    stars: 4,
+    topic: "开发者",
+    brief: "OpenAI 给出时限感知与异步澄清模式，让长任务在等待用户回答时继续工作，并在截止前交付可用结果。",
+    summary:
+      "OpenAI Developers 展示个人智能体的两项 Agents API 模式：启用实验性 time awareness，周期性把当前时间提醒模型；把向用户提问的函数工具设为 async，让智能体等待回答时仍可继续检索和整理。示例还要求应用把相对时间转成绝对时间戳、保存 session/turn/call 标识、为未回答问题设置截止状态，并用应用级计时器在请求仍进行时强制交付。手写 Responses API 循环也应在每次请求前刷新时间信息。",
+    why: "真实智能体既要会问问题，也不能被一个未回复的问题卡死。产品团队需要把截止时间、无回答降级、检查点、幂等副作用和晚到回复处理设计成运行时能力，而不是只写进提示词。",
+  },
+  {
+    id: "openai-medchembench-2026-11-23",
+    title: "Can AI help scientists identify promising drug candidates?",
+    source: "OpenAI",
+    url: "https://openai.com/index/introducing-medchembench/",
+    date: "2026-11-23",
+    time: "02:12",
+    stars: 4,
+    topic: "研究",
+    brief: "MedChemBench 用 99 道真实药化问题测试结构还原、证据推理、化合物筛选与性质预测，并公开模型仍弱的环节。",
+    summary:
+      "OpenAI 发布 MedChemBench，数据来自 117 篇论文和专利、包含 761 个不同分子结构，共 99 道问题。官方报告 GPT-6.2 Astra 在 xhigh 设置下获得 84.5% 可得分；但即便 Astra 的结构部分达到 95.4%，化合物选择与数值性质预测仍只有约一半得分。OpenAI 明确指出，基准不能证明模型能发现新药，无法排除对公开来源的预训练接触，而且评测没有工具、反馈或新实验。",
+    why: "科学 AI 的产品价值不该由总分替代。药物研发团队应分别验证结构识别、证据推理、排序决策和数值预测，并用盲测、实验反馈与专家复核约束“高分即能发现新药”的营销外推。",
+  },
+  {
+    id: "hf-inkling-2-mini-2026-11-23",
+    title: "Welcome Inkling 2 Mini, Cutting-edge Performance for your Local Setup",
+    source: "Hugging Face",
+    url: "https://huggingface.co/blog/inkling2mini",
+    date: "2026-11-23",
+    time: "02:11",
+    stars: 4,
+    topic: "模型",
+    brief: "Thinking Machines Lab 发布面向本地部署的 Inkling 2 Mini：26B 物理参数、每 token 激活 3B，并支持图文和 100 万上下文。",
+    summary:
+      "Hugging Face 介绍 Thinking Machines Lab 的 Inkling 2 Mini：一个约 26B 物理总参数、每 token 激活 3B 的多模态 MoE，部分层循环三次以增加有效容量，支持文本与图像输入及 100 万 token 上下文。权重采用 NVFP4 与 MXFP8 混合精度，并提供 Transformers、Llama App（llama.cpp）、MLX 和 SGLang 支持。Hugging Face 将其与 Qwen 3.8 27B 的接近表现描述为内部“vibe tests”，并明确仍需更多验证。",
+    why: "本地模型开始同时追求长上下文、多模态和智能体执行，而不只是压缩聊天能力。产品团队应在目标设备上实测内存、首 token 延迟、循环层吞吐和真实工具任务成功率，不能用参数量或非正式体验测试代替部署评测。",
+  },
+  {
+    id: "hf-harness-adapters-2026-11-23",
+    title: "Introducing harness adapters: adapt your favorite model to your harness to improve performance and cost",
+    source: "Hugging Face",
+    url: "https://huggingface.co/blog/harness-adapters-at-scale",
+    date: "2026-11-23",
+    time: "02:10",
+    stars: 4,
+    topic: "开发者",
+    brief: "Hugging Face 用按运行框架训练的 LoRA 适配器证明：智能体能力取决于模型与 harness 的组合，适配还能显著减少工具调用。",
+    summary:
+      "Hugging Face 针对 Pi、Hermes Agent 与 OpenCode 三种 harness，为 Qwen3.8-27B 分别训练 LoRA 适配器，并在 Terminal-Bench 2.1 与 SWE-bench Pro 上评估。官方报告三个专用适配器在各自 harness 的两项基准都优于基座；以 Pi 的 SWE-bench Pro hard 51 为例，pass@1 从 39.2% 升至 64.7%。在基座与适配模型共同解出的任务上，适配器的工具调用减少 53%–72%。以上为发布方单次运行结果，且不同 harness 之间不能直接横比。",
+    why: "智能体产品的性能来自模型、提示、工具协议与运行时共同作用。团队应在自己的 harness 内训练和评测适配层，并同时观察成功率、工具调用数和 token 成本，避免只追逐通用模型排行榜。",
+  },
+  {
     id: "openai-chatgpt-flexible-rate-card-2026-08-07",
     title: "ChatGPT Rate Card (Business, Enterprise/Edu)",
     source: "OpenAI Help Center",
@@ -603,7 +771,7 @@ const STORY_DATES = Array.from(new Set(STORIES.map((story) => story.date)))
   .sort((a, b) => b.localeCompare(a))
   .slice(0, 7);
 const CURRENT_DATE = STORY_DATES[0];
-const CURATED_AT = "10:20";
+const CURATED_AT = "09:42";
 
 function dateParts(date: string) {
   const value = new Date(`${date}T00:00:00+08:00`);
@@ -803,7 +971,7 @@ export default function Home() {
                 </p>
                 {activeDate === CURRENT_DATE && (
                   <p className="editor-note">
-                    严格核验过去 24 小时，收录 2 条官方产业更新与 4 篇刚提交的研究预印本；研究数字均按作者报告表述并提示尚待独立复现。未使用传闻、社交平台线索或 8 月 4–5 日旧发布补数。
+                    严格核验过去 24 小时，收录 6 条来自发布团队、官方技术博客或原始研究报告的更新；所有性能数字均按发布方报告表述，并标注单一环境、有限样本或尚未独立复现等局限。未使用社交平台传闻或无法追溯的二手消息补数。
                   </p>
                 )}
               </div>
